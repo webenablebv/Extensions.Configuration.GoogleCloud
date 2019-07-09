@@ -1,11 +1,9 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Google.Cloud.Storage.V1;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
 
 namespace Webenable.Extensions.Configuration.GoogleCloud
 {
@@ -29,14 +27,12 @@ namespace Webenable.Extensions.Configuration.GoogleCloud
         {
             using (var client = StorageClient.Create())
             using (var ms = new MemoryStream())
-            using (var sr = new StreamReader(ms))
             {
                 try
                 {
                     await client.DownloadObjectAsync(_configurationSource.BucketName, _configurationSource.FileName, ms);
                     ms.Position = 0;
-                    var dict = JsonConvert.DeserializeObject<IDictionary<string, string>>(await sr.ReadToEndAsync());
-                    Data = dict;
+                    Data = JsonConfigurationFileParser.Parse(ms);
                 }
                 catch (Exception ex)
                 {
