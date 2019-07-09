@@ -7,8 +7,8 @@ nuget:
 build_script:
   - cmd: dotnet restore
   - cmd: dotnet build
-  #- cmd: dotnet test .\test\Webenable.Extensions.Configuration.GoogleCloudb.Tests
-  - cmd: dotnet pack .\src\Webenable.Extensions.Configuration.GoogleCloudb -c Release -o .\artifacts
+  #- cmd: dotnet test .\test\Webenable.Extensions.Configuration.GoogleCloud.Tests
+  - cmd: dotnet pack .\src\Webenable.Extensions.Configuration.GoogleCloud -c Release -o .\artifacts
 test: off
 branches:
   only:
@@ -20,5 +20,5 @@ environment:
   DOTNET_CLI_TELEMETRY_OPTOUT: true
   CI: true
 artifacts:
-- path: .\src\Webenable.Extensions.Configuration.GoogleCloudb\artifacts\**\*.nupkg
+- path: .\src\Webenable.Extensions.Configuration.GoogleCloud\artifacts\**\*.nupkg
   name: NuGet
