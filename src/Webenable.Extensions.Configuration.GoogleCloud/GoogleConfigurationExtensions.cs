@@ -38,7 +38,7 @@ namespace Webenable.Extensions.Configuration.GoogleCloud
             builder.ConfigureAppConfiguration((ctx, configBuilder) =>
             {
                 var envName = ctx.HostingEnvironment.EnvironmentName;
-                configBuilder.AddGoogleCloud($"{GoogleCloudApp.GoogleCloudProjectId}-aspnetcore", $"appsettings.{envName}.json");
+                configBuilder.AddGoogleCloud($"{GoogleCloudApp.GoogleCloudProjectId}-aspnetcore", $"appsettings.{envName}.json", reloadDelay);
             });
             return builder;
         }
