@@ -1,0 +1,18 @@
+language: csharp
+mono: none
+dotnet: 2.2
+dist: xenial
+branches:
+  only:
+  - master
+script:
+    - dotnet restore
+    - dotnet build
+    #- dotnet test test/Webenable.Extensions.Configuration.GoogleCloud.Tests
+matrix:
+  include:
+    - os: linux
+      dist: xenial
+    - os: osx
+      dotnet: 2.2.104
+      osx_image: xcode10.1

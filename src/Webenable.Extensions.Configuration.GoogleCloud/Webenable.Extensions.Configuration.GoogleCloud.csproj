@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <VersionPrefix>0.1.0</VersionPrefix>
+    <LangVersion>latest</LangVersion>
+    <Description>ASP.NET Core Configuration for Google Cloud.</Description>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Copyright>© 2019 Webenable, Henk Mollema</Copyright>
+    <PackageProjectUrl>https://github.com/webenablebv/Extensions.Configuration.GoogleCloud</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/webenablebv/Extensions.Configuration.GoogleCloud/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/webenablebv/Extensions.Configuration.GoogleCloud</RepositoryUrl>
+    <Authors>Webenable B.V.;Henk Mollema</Authors>
+    <PackageTags>configuration;aspnetcore;google-cloud;google-appengine</PackageTags>
+    <NoWarn>CS1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Google.Cloud.Storage.V1" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+</Project>
