@@ -7,7 +7,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Copyright>© 2019 Webenable, Henk Mollema</Copyright>
     <PackageProjectUrl>https://github.com/webenablebv/Extensions.Configuration.GoogleCloud</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/webenablebv/Extensions.Configuration.GoogleCloud/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/webenablebv/Extensions.Configuration.GoogleCloud</RepositoryUrl>
     <Authors>Webenable B.V.;Henk Mollema</Authors>
