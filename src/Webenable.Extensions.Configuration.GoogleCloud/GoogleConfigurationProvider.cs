@@ -90,7 +90,7 @@ namespace Webenable.Extensions.Configuration.GoogleCloud
             }
         }
 
-        private async Task WaitForReload() => await Task.Delay(_configurationSource.ReloadTimeout.Value.Milliseconds, _cancellationToken.Token);
+        private async Task WaitForReload() => await Task.Delay(_configurationSource.ReloadTimeout.Value, _cancellationToken.Token);
 
         public void Dispose()
         {
