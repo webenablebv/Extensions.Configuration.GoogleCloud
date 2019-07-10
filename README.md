@@ -1,6 +1,6 @@
 # ASP.NET Core Configuration for Google Cloud
 
-Safely manage and store your sensitve ASP.NET Core application configuration using [Google Cloud Storage buckets](https://cloud.google.com/storage/docs/) for applications hosted on App Engine.
+Safely manage and store your sensitive ASP.NET Core application configuration using [Google Cloud Storage buckets](https://cloud.google.com/storage/docs/) for applications hosted on App Engine.
 
 ## Installation
 
