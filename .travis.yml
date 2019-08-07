@@ -6,8 +6,8 @@ branches:
   only:
   - master
 script:
-    - dotnet restore -f netstandard2.0
-    - dotnet build -f netstandard2.0
+    - dotnet restore
+    - dotnet build
     #- dotnet test test/Webenable.Extensions.Configuration.GoogleCloud.Tests
 matrix:
   include:

@@ -5,10 +5,10 @@ image: Visual Studio 2019
 nuget:
   disable_publish_on_pr: true
 build_script:
-  - cmd: dotnet restore -f netstandard2.0
-  - cmd: dotnet build -f netstandard2.0
+  - cmd: dotnet restore
+  - cmd: dotnet build
   #- cmd: dotnet test .\test\Webenable.Extensions.Configuration.GoogleCloud.Tests
-  - cmd: dotnet pack .\src\Webenable.Extensions.Configuration.GoogleCloud -c Release -o .\artifacts -f netstandard2.0
+  - cmd: dotnet pack .\src\Webenable.Extensions.Configuration.GoogleCloud -c Release -o .\artifacts
 test: off
 branches:
   only:
