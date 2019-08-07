@@ -1,6 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 
 namespace Webenable.Extensions.Configuration.GoogleCloud
 {
@@ -9,6 +10,40 @@ namespace Webenable.Extensions.Configuration.GoogleCloud
     /// </summary>
     public static class GoogleConfigurationExtensions
     {
+        /// <summary>
+        /// Adds application configuration from Google Cloud Storage from the default location with a default reload delay of 1 minute.
+        /// </summary>
+        public static IHostBuilder AddGoogleCloudConfiguration(this IHostBuilder builder) =>
+            AddGoogleCloudConfiguration(builder, withReload: true);
+
+        /// <summary>
+        /// Adds application configuration from Google Cloud Storage from the default location with an optional reload delay of 1 minute.
+        /// </summary>
+        /// <param name="builder">The web host builder.</param>
+        /// <param name="withReload">Specifies whether to automatically reload configuration every minute.</param>
+        public static IHostBuilder AddGoogleCloudConfiguration(this IHostBuilder builder, bool withReload) =>
+            AddGoogleCloudConfiguration(builder, withReload ? TimeSpan.FromMinutes(1) : (TimeSpan?)null);
+
+        /// <summary>
+        /// Adds application configuration from Google Cloud Storage from the default location with the specified reload delay.
+        /// </summary>
+        /// <param name="builder">The web host builder.</param>
+        /// <param name="reloadDelay">The amount of delay for reloading the configuration. Specify null to disable reloading.</param>
+        public static IHostBuilder AddGoogleCloudConfiguration(this IHostBuilder builder, TimeSpan? reloadDelay)
+        {
+            if (!GoogleCloudApp.IsRunningOnGoogleCloud)
+            {
+                return builder;
+            }
+
+            builder.ConfigureAppConfiguration((ctx, configBuilder) =>
+            {
+                var envName = ctx.HostingEnvironment.EnvironmentName;
+                configBuilder.AddGoogleCloud($"{GoogleCloudApp.GoogleCloudProjectId}-aspnetcore", $"appsettings.{envName}.json", reloadDelay);
+            });
+            return builder;
+        }
+
         /// <summary>
         /// Adds application configuration from Google Cloud Storage from the default location with a default reload delay of 1 minute.
         /// </summary>
