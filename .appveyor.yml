@@ -7,7 +7,6 @@ nuget:
 build_script:
   - cmd: dotnet restore
   - cmd: dotnet build
-  #- cmd: dotnet test .\test\Webenable.Extensions.Configuration.GoogleCloud.Tests
   - cmd: dotnet pack .\src\Webenable.Extensions.Configuration.GoogleCloud -c Release -o .\artifacts
 test: off
 branches:

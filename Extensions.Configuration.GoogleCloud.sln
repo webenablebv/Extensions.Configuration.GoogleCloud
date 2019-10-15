@@ -1,11 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29318.209
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DD82B88A-919C-4B79-BAE2-A688B06EA5DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webenable.Extensions.Configuration.GoogleCloud", "src\Webenable.Extensions.Configuration.GoogleCloud\Webenable.Extensions.Configuration.GoogleCloud.csproj", "{8E1C1B41-93D3-4217-91E7-EB53F349225F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webenable.Extensions.Configuration.GoogleCloud", "src\Webenable.Extensions.Configuration.GoogleCloud\Webenable.Extensions.Configuration.GoogleCloud.csproj", "{8E1C1B41-93D3-4217-91E7-EB53F349225F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B85C73D5-24C5-4680-AC03-B8C44BA19ABB}"
+	ProjectSection(SolutionItems) = preProject
+		.appveyor.yml = .appveyor.yml
+		.gitignore = .gitignore
+		.travis.yml = .travis.yml
+		global.json = global.json
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +25,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8E1C1B41-93D3-4217-91E7-EB53F349225F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -33,7 +40,13 @@ Global
 		{8E1C1B41-93D3-4217-91E7-EB53F349225F}.Release|x86.ActiveCfg = Release|Any CPU
 		{8E1C1B41-93D3-4217-91E7-EB53F349225F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8E1C1B41-93D3-4217-91E7-EB53F349225F} = {DD82B88A-919C-4B79-BAE2-A688B06EA5DA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DE5EE881-25DB-4310-8876-44F26523F9AE}
 	EndGlobalSection
 EndGlobal
