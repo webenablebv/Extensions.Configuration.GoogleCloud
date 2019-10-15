@@ -11,7 +11,7 @@ namespace Webenable.Extensions.Configuration.GoogleCloud
     {
         private readonly GoogleCloudConfigurationSource _configurationSource;
         private readonly CancellationTokenSource _cancellationToken;
-        private Task _pollingTask;
+        private Task? _pollingTask;
         private DateTime? _lastUpdated;
 
         public GoogleCloudConfigurationProvider(GoogleCloudConfigurationSource configurationSource)
@@ -57,10 +57,8 @@ namespace Webenable.Extensions.Configuration.GoogleCloud
         {
             try
             {
-                using (var client = StorageClient.Create())
-                {
-                    return (await client.GetObjectAsync(_configurationSource.BucketName, _configurationSource.FileName)).Updated;
-                }
+                using var client = StorageClient.Create();
+                return (await client.GetObjectAsync(_configurationSource.BucketName, _configurationSource.FileName)).Updated;
             }
             catch (Exception ex)
             {
@@ -90,11 +88,12 @@ namespace Webenable.Extensions.Configuration.GoogleCloud
             }
         }
 
-        private async Task WaitForReload() => await Task.Delay(_configurationSource.ReloadTimeout.Value, _cancellationToken.Token);
+        private async Task WaitForReload() => await Task.Delay(_configurationSource.ReloadTimeout.GetValueOrDefault(TimeSpan.FromMinutes(1)), _cancellationToken.Token);
 
         public void Dispose()
         {
             _cancellationToken.Cancel();
+            _cancellationToken.Dispose();
         }
     }
 }

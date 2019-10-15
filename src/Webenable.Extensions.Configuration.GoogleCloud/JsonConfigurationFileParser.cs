@@ -16,9 +16,9 @@ namespace Webenable.Extensions.Configuration.GoogleCloud
 
         private readonly IDictionary<string, string> _data = new SortedDictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         private readonly Stack<string> _context = new Stack<string>();
-        private string _currentPath;
+        private string? _currentPath;
 
-        private JsonTextReader _reader;
+        private JsonTextReader? _reader;
 
         public static IDictionary<string, string> Parse(Stream input)
             => new JsonConfigurationFileParser().ParseStream(input);
@@ -26,8 +26,10 @@ namespace Webenable.Extensions.Configuration.GoogleCloud
         private IDictionary<string, string> ParseStream(Stream input)
         {
             _data.Clear();
-            _reader = new JsonTextReader(new StreamReader(input));
-            _reader.DateParseHandling = DateParseHandling.None;
+            _reader = new JsonTextReader(new StreamReader(input))
+            {
+                DateParseHandling = DateParseHandling.None
+            };
 
             var jsonConfig = JObject.Load(_reader);
 
@@ -46,10 +48,7 @@ namespace Webenable.Extensions.Configuration.GoogleCloud
             }
         }
 
-        private void VisitProperty(JProperty property)
-        {
-            VisitToken(property.Value);
-        }
+        private void VisitProperty(JProperty property) => VisitToken(property.Value);
 
         private void VisitToken(JToken token)
         {
@@ -74,13 +73,13 @@ namespace Webenable.Extensions.Configuration.GoogleCloud
                     break;
 
                 default:
-                    throw new FormatException($"Invalid JSON token '{_reader.TokenType}' in '{_reader.Path}':{_reader.LineNumber}:{_reader.LinePosition}.");
+                    throw new FormatException($"Invalid JSON token '{_reader?.TokenType}' in '{_reader?.Path}':{_reader?.LineNumber}:{_reader?.LinePosition}.");
             }
         }
 
         private void VisitArray(JArray array)
         {
-            for (int index = 0; index < array.Count; index++)
+            for (var index = 0; index < array.Count; index++)
             {
                 EnterContext(index.ToString());
                 VisitToken(array[index]);
@@ -91,6 +90,10 @@ namespace Webenable.Extensions.Configuration.GoogleCloud
         private void VisitPrimitive(JValue data)
         {
             var key = _currentPath;
+            if (key == null)
+            {
+                return;
+            }
 
             if (_data.ContainsKey(key))
             {

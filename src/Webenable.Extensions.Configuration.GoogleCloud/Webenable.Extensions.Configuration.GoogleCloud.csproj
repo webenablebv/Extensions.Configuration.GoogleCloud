@@ -13,6 +13,7 @@
     <Authors>Webenable B.V.;Henk Mollema</Authors>
     <PackageTags>configuration;aspnetcore;google-cloud;google-appengine</PackageTags>
     <NoWarn>CS1591</NoWarn>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Google.Cloud.Storage.V1" Version="2.3.0" />

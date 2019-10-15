@@ -6,6 +6,6 @@ namespace Webenable.Extensions.Configuration.GoogleCloud
     {
         public static bool IsRunningOnGoogleCloud => Environment.GetEnvironmentVariable("GAE_INSTANCE") != null;
 
-        public static string GoogleCloudProjectId => Environment.GetEnvironmentVariable("GCLOUD_PROJECT");
+        public static string GoogleCloudProjectId => Environment.GetEnvironmentVariable("GCLOUD_PROJECT")!;
     }
 }

@@ -22,9 +22,6 @@ namespace Webenable.Extensions.Configuration.GoogleCloud
 
         public TimeSpan? ReloadTimeout { get; }
 
-        public IConfigurationProvider Build(IConfigurationBuilder builder)
-        {
-            return new GoogleCloudConfigurationProvider(this);
-        }
+        public IConfigurationProvider Build(IConfigurationBuilder builder) => new GoogleCloudConfigurationProvider(this);
     }
 }
