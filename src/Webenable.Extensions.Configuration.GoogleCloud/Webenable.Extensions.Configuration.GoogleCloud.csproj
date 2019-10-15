@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netcoreapp3.0</TargetFrameworks>
-    <VersionPrefix>0.3.0</VersionPrefix>
+    <VersionPrefix>0.3.1</VersionPrefix>
     <LangVersion>latest</LangVersion>
     <Description>ASP.NET Core Configuration for Google Cloud.</Description>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
